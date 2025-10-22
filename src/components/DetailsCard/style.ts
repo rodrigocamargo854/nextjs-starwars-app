@@ -89,7 +89,6 @@ export const Value = styled.span`
   }
 `;
 
-/* Ações simples (ex.: voltar) */
 export const Actions = styled.div`
   display: flex;
   justify-content: flex-start;
