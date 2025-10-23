@@ -17,9 +17,6 @@ export const CardWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(99, 102, 241, 0.15);
-    background: linear-gradient(to bottom, #eef2ff, #ffffff);
   }
 
   @media (prefers-color-scheme: dark) {
