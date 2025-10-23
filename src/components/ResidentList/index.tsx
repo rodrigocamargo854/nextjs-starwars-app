@@ -1,15 +1,8 @@
 "use client";
+import { Resident } from "@/app/lib/api/types";
 import * as S from "../ResidentList/styles";
 
-type Vehicle = { name: string; model: string };
-type Resident = {
-  name: string;
-  hairColor: string;
-  eyeColor: string;
-  gender: string;
-  species: string[];
-  vehicles: Vehicle[];
-};
+
 
 export function ResidentsList({ residents }: { residents: Resident[] }) {
   if (!residents.length) {

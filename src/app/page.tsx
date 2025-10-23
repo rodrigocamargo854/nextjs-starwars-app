@@ -3,20 +3,9 @@
 import { useEffect, useState } from "react";
 import { getPlanets } from "./lib/api/starwars/api";
 import { Card } from "@/components/Card/Index";
+import { ApiResponse } from "./lib/api/types";
 
-type Planet = {
-  name: string;
-  climate: string;
-  terrain: string;
-  diameter: string;
-  films?: string[];
-  url: string;
-};
 
-type ApiResponse = {
-  count: number;
-  results: Planet[];
-};
 
 function getIdFromUrl(url: string) {
   return url.split("/").filter(Boolean).pop()!;

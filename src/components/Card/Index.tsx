@@ -1,12 +1,9 @@
 "use client";
 
+import { CardProps } from "@/app/lib/api/types";
 import * as S from "../Card/style";
 
-type CardProps = {
-  href: string;
-  title: string;
-  info: string[];
-};
+
 
 export function Card({ href, title, info }: CardProps) {
   return (

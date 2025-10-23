@@ -2,17 +2,9 @@
 
 import Link from "next/link";
 import * as S from "../DetailsCard/style";
+import { PlanetDetails } from "@/app/lib/api/types";
 
-export type PlanetDetails = {
-  name: string;
-  rotation_period: string;
-  orbital_period: string;
-  diameter: string;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  population: string;
-};
+
 
 export default function DetailsCard({ planet }: { planet: PlanetDetails }) {
   return (

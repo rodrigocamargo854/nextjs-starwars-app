@@ -1,12 +1,16 @@
 import axios from "axios";
 
-const isServer = typeof window === "undefined";
+function getBaseUrl() {
+  if (typeof window !== "undefined") return "";
 
-const ORIGIN =
-  process.env.NEXT_PUBLIC_BASE_URL 
-  || (isServer ? "http://localhost:3000" : "");
+  if (process.env.NEXT_PUBLIC_BASE_URL) return process.env.NEXT_PUBLIC_BASE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
+  const port = process.env.PORT ?? 3000;
+  return `http://127.0.0.1:${port}`;
+}
 
 export const http = axios.create({
-  baseURL: `${ORIGIN}/api`,
+  baseURL: `${getBaseUrl()}/api`,
   timeout: 10000,
 });
