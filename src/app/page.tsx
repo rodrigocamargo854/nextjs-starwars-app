@@ -6,9 +6,9 @@ export const dynamic = "force-dynamic";
 async function fetchFilmTitle(url: string, cache: Map<string, string>) {
   if (cache.has(url)) return cache.get(url)!;
   const res = await fetch(url, { next: { revalidate: 0 } });
-  if (!res.ok) return "Desconhecido";
+  if (!res.ok) return "Unknown";
   const json = await res.json();
-  const title = typeof json?.title === "string" ? json.title : "Desconhecido";
+  const title = typeof json?.title === "string" ? json.title : "Unknown";
   cache.set(url, title);
   return title;
 }
@@ -32,17 +32,17 @@ export default async function Home() {
       <ul className="grid gap-6 w-full max-w-5xl sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 list-none">
         {enriched.map((p: any) => {
           const id = p.url.split("/").filter(Boolean).pop();
-          const films = p.filmTitles.length ? p.filmTitles.join(", ") : "Nenhum";
+          const films = p.filmTitles.length ? p.filmTitles.join(", ") : "None";
           return (
             <li key={p.name}>
               <Card
                 href={`/planets/${id}`}
                 title={p.name}
                 info={[
-                  `Terreno: ${p.terrain ?? "Desconhecido"}`,
-                  `Diâmetro: ${p.diameter ?? "Desconhecido"}`,
-                  `Clima: ${p.climate ?? "Desconhecido"}`,
-                  `Filmes: ${films}`,
+                  `Terrain: ${p.terrain ?? "Unknown"}`,
+                  `Diameter: ${p.diameter ?? "Unknown"}`,
+                  `Climate: ${p.climate ?? "Unknown"}`,
+                  `Films: ${films}`,
                 ]}
               />
             </li>

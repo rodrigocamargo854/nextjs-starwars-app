@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-// substitui Geist por Inter e Roboto_Mono
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],

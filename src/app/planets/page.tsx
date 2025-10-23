@@ -1,5 +1,5 @@
 import { getPlanetById } from "@/app/lib/api/starwars/api";
-import { DetailsCard } from "@/components/DetailsCard/Index";
+import DetailsCard from "@/components/DetailsCard/Index";
 
 export const dynamic = "force-dynamic";
 

@@ -1,18 +1,20 @@
 "use client";
-import * as S from "../../components/DetailsCard/style";
 
-type PlanetDetailsCardProps = {
-  planet: {
-    name: string;
-    climate: string;
-    terrain: string;
-    population: string;
-    diameter?: string;
-    gravity?: string;
-  };
+import Link from "next/link";
+import * as S from "../DetailsCard/style";
+
+export type PlanetDetails = {
+  name: string;
+  rotation_period: string;
+  orbital_period: string;
+  diameter: string;
+  climate: string;
+  gravity: string;
+  terrain: string;
+  population: string;
 };
 
-export function DetailsCard({ planet }: { planet: any }) {
+export default function DetailsCard({ planet }: { planet: PlanetDetails }) {
   return (
     <S.Wrapper>
       <S.Topbar />
@@ -20,19 +22,20 @@ export function DetailsCard({ planet }: { planet: any }) {
         <S.Title>{planet.name}</S.Title>
         <S.Divider />
         <S.Grid>
-          <S.Row><S.Label>Clima:</S.Label> <S.Value>{planet.climate}</S.Value></S.Row>
-          <S.Row><S.Label>Terreno:</S.Label> <S.Value>{planet.terrain}</S.Value></S.Row>
-          <S.Row><S.Label>População:</S.Label> <S.Value>{planet.population}</S.Value></S.Row>
-          {planet.diameter && (
-            <S.Row><S.Label>Diâmetro:</S.Label> <S.Value>{planet.diameter}</S.Value></S.Row>
-          )}
-          {planet.gravity && (
-            <S.Row><S.Label>Gravidade:</S.Label> <S.Value>{planet.gravity}</S.Value></S.Row>
-          )}
+          <S.Row><S.Label>Rotation period:</S.Label> <S.Value>{planet.rotation_period}</S.Value></S.Row>
+          <S.Row><S.Label>Orbital period:</S.Label>  <S.Value>{planet.orbital_period}</S.Value></S.Row>
+          <S.Row><S.Label>Diameter:</S.Label>         <S.Value>{planet.diameter}</S.Value></S.Row>
+          <S.Row><S.Label>Climate:</S.Label>            <S.Value>{planet.climate}</S.Value></S.Row>
+          <S.Row><S.Label>Gravity:</S.Label>        <S.Value>{planet.gravity}</S.Value></S.Row>
+          <S.Row><S.Label>Terrain:</S.Label>          <S.Value>{planet.terrain}</S.Value></S.Row>
+          <S.Row><S.Label>Population:</S.Label>        <S.Value>{planet.population}</S.Value></S.Row>
         </S.Grid>
       </S.Body>
-      <S.Actions>
-        <S.BackLink href="/">Voltar</S.BackLink>
+
+            <S.Actions>
+        <Link href="/" passHref>
+          <S.BackButton>← Back to Planets</S.BackButton>
+        </Link>
       </S.Actions>
     </S.Wrapper>
   );

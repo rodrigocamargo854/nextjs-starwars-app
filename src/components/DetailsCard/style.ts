@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
   width: 100%;
   max-width: 560px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
-  overflow: hidden; 
+  overflow: hidden;
 
   @media (prefers-color-scheme: dark) {
     background: #18181b;
@@ -61,6 +61,7 @@ export const Grid = styled.div`
     grid-template-columns: 1fr 1fr;
   }
 `;
+
 export const Row = styled.p`
   margin: 0;
   font-size: 0.95rem;
@@ -74,7 +75,7 @@ export const Row = styled.p`
 
 export const Label = styled.span`
   display: inline-block;
-  min-width: 92px;
+  min-width: 120px;
   color: #6b7280;
   @media (prefers-color-scheme: dark) {
     color: #9ca3af;
@@ -112,5 +113,21 @@ export const BackLink = styled(Link)`
     &:hover {
       background: #232327;
     }
+  }
+`;
+
+
+
+export const BackButton = styled.a`
+  padding: 0.5rem 1.2rem;
+  background-color: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #3730a3;
   }
 `;
