@@ -1,47 +1,76 @@
-import { Card } from "@/components/Card/Index";
+"use client";
+
+import { useEffect, useState } from "react";
 import { getPlanets } from "./lib/api/starwars/api";
+import { Card } from "@/components/Card/Index";
 
-export const dynamic = "force-dynamic";
+type Planet = {
+  name: string;
+  climate: string;
+  terrain: string;
+  diameter: string;
+  films?: string[];
+  url: string;
+};
 
-async function fetchFilmTitle(url: string, cache: Map<string, string>) {
-  if (cache.has(url)) return cache.get(url)!;
-  const res = await fetch(url, { next: { revalidate: 0 } });
-  if (!res.ok) return "Unknown";
-  const json = await res.json();
-  const title = typeof json?.title === "string" ? json.title : "Unknown";
-  cache.set(url, title);
-  return title;
+type ApiResponse = {
+  count: number;
+  results: Planet[];
+};
+
+function getIdFromUrl(url: string) {
+  return url.split("/").filter(Boolean).pop()!;
 }
 
-export default async function Home() {
-  const data = await getPlanets();
+export default function Home() {
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState<ApiResponse>({ count: 0, results: [] });
+  const [loading, setLoading] = useState(false);
 
-  const filmCache = new Map<string, string>();
-  const enriched = await Promise.all(
-    (data.results ?? []).map(async (p: any) => {
-      const filmTitles = Array.isArray(p.films) && p.films.length
-        ? await Promise.all(p.films.map((u: string) => fetchFilmTitle(u, filmCache)))
-        : [];
-      return { ...p, filmTitles };
-    })
-  );
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      setLoading(true);
+      try {
+        const res = await getPlanets(page, search);
+        if (alive) setData({ count: res.count ?? 0, results: res.results ?? [] });
+      } finally {
+        setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [page, search]);
+
+  const totalPages = Math.max(1, Math.ceil(data.count / 10));
 
   return (
     <main className="flex flex-col min-h-screen items-center p-8 bg-white dark:bg-zinc-950">
-      <h1 className="text-2xl font-bold mb-6">Star Wars Planets</h1>
+      <div className="w-full max-w-5xl flex justify-between items-center mb-6 gap-3">
+        <h1 className="text-2xl font-bold">Star Wars Planets</h1>
+        <input
+          value={search}
+          onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+          placeholder="Search by name..."
+          className="border rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-900"
+        />
+      </div>
+
+      {loading && <p className="text-sm text-zinc-500 mb-4">Loading...</p>}
+
       <ul className="grid gap-6 w-full max-w-5xl sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 list-none">
-        {enriched.map((p: any) => {
-          const id = p.url.split("/").filter(Boolean).pop();
-          const films = p.filmTitles.length ? p.filmTitles.join(", ") : "None";
+        {data.results.map((p) => {
+          const id = getIdFromUrl(p.url);
+          const films = p.films?.length ? p.films.length : "None";
           return (
-            <li key={p.name}>
+            <li key={p.url}>
               <Card
                 href={`/planets/${id}`}
                 title={p.name}
                 info={[
-                  `Terrain: ${p.terrain ?? "Unknown"}`,
-                  `Diameter: ${p.diameter ?? "Unknown"}`,
-                  `Climate: ${p.climate ?? "Unknown"}`,
+                  `Terrain: ${p.terrain || "Unknown"}`,
+                  `Diameter: ${p.diameter || "Unknown"}`,
+                  `Climate: ${p.climate || "Unknown"}`,
                   `Films: ${films}`,
                 ]}
               />
@@ -49,6 +78,24 @@ export default async function Home() {
           );
         })}
       </ul>
+
+      <div className="mt-8 flex items-center gap-3">
+        <button
+          disabled={page <= 1}
+          onClick={() => setPage((p) => p - 1)}
+          className="border rounded px-3 py-2 text-sm disabled:opacity-50"
+        >
+          Prev
+        </button>
+        <span className="text-sm">Page {page} of {totalPages}</span>
+        <button
+          disabled={page >= totalPages}
+          onClick={() => setPage((p) => p + 1)}
+          className="border rounded px-3 py-2 text-sm disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
     </main>
   );
 }
