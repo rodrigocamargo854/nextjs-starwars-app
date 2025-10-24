@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Card } from "./Index";
@@ -14,14 +13,15 @@ describe("<Card />", () => {
       />
     );
 
-    expect(screen.getByText("Tatooine")).toBeInTheDocument();
+    const titleEl = screen.getByText("Tatooine");
+    expect(titleEl).toBeInTheDocument();
 
     const list = screen.getByRole("list");
     const items = within(list).getAllByRole("listitem");
     expect(items).toHaveLength(4);
     expect(items[0]).toHaveTextContent("Terrain: desert");
 
-    const link = screen.getByRole("link", { name: /tatooine/i });
-    expect(link).toHaveAttribute("href", "/planets/1");
+    const container = titleEl.closest('[data-href]');
+    expect(container).toHaveAttribute("data-href", "/planets/1");
   });
 });

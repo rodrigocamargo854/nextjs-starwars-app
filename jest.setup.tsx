@@ -7,9 +7,10 @@ global.React = React;
 jest.mock("next/link", () => ({
   __esModule: true,
   default: ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <a href={href}>{children}</a>
+    <span data-href={href}>{children}</span>
   ),
 }));
+
 
 jest.mock("next/image", () => ({
   __esModule: true,

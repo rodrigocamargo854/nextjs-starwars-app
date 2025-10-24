@@ -1,4 +1,3 @@
-
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DetailsCard from "./Index";
@@ -22,26 +21,21 @@ describe("<DetailsCard />", () => {
 
     expect(screen.getByText("Rotation period:")).toBeInTheDocument();
     expect(screen.getByText("23")).toBeInTheDocument();
-
     expect(screen.getByText("Orbital period:")).toBeInTheDocument();
     expect(screen.getByText("304")).toBeInTheDocument();
-
     expect(screen.getByText("Diameter:")).toBeInTheDocument();
     expect(screen.getByText("10465")).toBeInTheDocument();
-
     expect(screen.getByText("Climate:")).toBeInTheDocument();
     expect(screen.getByText("arid")).toBeInTheDocument();
-
     expect(screen.getByText("Gravity:")).toBeInTheDocument();
     expect(screen.getByText("1 standard")).toBeInTheDocument();
-
     expect(screen.getByText("Terrain:")).toBeInTheDocument();
     expect(screen.getByText("desert")).toBeInTheDocument();
-
     expect(screen.getByText("Population:")).toBeInTheDocument();
     expect(screen.getByText("200000")).toBeInTheDocument();
 
-    const back = screen.getByRole("link", { name: /back to planets/i });
-    expect(back).toHaveAttribute("href", "/");
+    const backText = screen.getByText(/back to planets/i);
+    const container = backText.closest("[data-href]");
+    expect(container).toHaveAttribute("data-href", "/");
   });
 });

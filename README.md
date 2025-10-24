@@ -5,18 +5,60 @@ O foco foi criar uma experiência limpa, responsiva e funcional — listando pla
 
 ---
 
-##  Tecnologias utilizadas
+## 🚀 Tecnologias Utilizadas
 
-- [Next.js 14 (App Router)](https://nextjs.org/)
-- [React 18](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Styled Components](https://styled-components.com/)
-- [Axios](https://axios-http.com/)
-- [Jest + React Testing Library](https://jestjs.io/)
-- [ESLint + Prettier](https://eslint.org/)
-- [SWAPI (Star Wars API)](https://swapi.dev/)
+- **[Next.js 14 (App Router)](https://nextjs.org/docs)** – Framework React moderno, utilizado para renderização híbrida (SSR/SSG) e rotas de API integradas.  
+- **[React 18](https://react.dev/)** – Biblioteca base da aplicação, responsável pela renderização de componentes e gerenciamento de estado.  
+- **[TypeScript](https://www.typescriptlang.org/)** – Tipagem estática e suporte avançado a IntelliSense, garantindo maior segurança e produtividade no código.  
+- **[Styled Components](https://styled-components.com/)** – Estilização de componentes utilizando CSS-in-JS com suporte a temas dinâmicos (dark/light).  
+- **[Axios](https://axios-http.com/)** – Cliente HTTP simples e poderoso, utilizado para consumir a SWAPI e APIs internas.  
+- **[Jest](https://jestjs.io/)** + **[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)** – Stack de testes para garantir qualidade e cobertura de componentes e hooks.  
+- **[ESLint](https://eslint.org/)** + **[Prettier](https://prettier.io/)** – Padrões de código e formatação automatizada, integrados ao fluxo de desenvolvimento.  
+- **[SWAPI (Star Wars API)](https://swapi.dev/)** – Fonte de dados oficial da aplicação, fornecendo informações sobre planetas, espécies e personagens.  
+- **[Jotai](https://jotai.org/)** – Biblioteca de gerenciamento de estado atômico simples e escalável (ideal para controle global leve, caso seja integrado futuramente).
+
 
 ---
+
+A estrutura atual do projeto está organizada da seguinte forma:
+
+src/
+├── app/
+│ ├── tests/ # Testes de páginas e rotas
+│ │ ├── loading.test.ts
+│ │ └── page.test.ts
+│ ├── api/
+│ │ └── planets/
+│ │ ├── [id]/route.ts
+│ │ └── route.ts # Rotas de API internas (Next.js)
+│ ├── lib/
+│ │ └── api/
+│ │ ├── https.ts
+│ │ └── swarwars.ts
+│ ├── planets/
+│ │ ├── [id]/page.tsx # Página de detalhes do planeta
+│ │ ├── loading.tsx # Skeleton Loader
+│ │ └── page.tsx # Lista principal de planetas
+│ ├── favicon.ico
+│ ├── globals.css
+│ ├── layout.tsx
+│ └── page.tsx
+│
+├── components/
+│ ├── Card/
+│ │ ├── Index.tsx
+│ │ └── index.test.tsx
+│ ├── DetailsCard/
+│ ├── DetailsList/
+│ └── ResidentList/
+│
+├── styles/
+│ └── style.ts
+│
+├── types/
+│ └── types.ts
+│
+└── .env.local # Variáveis de ambiente
 
 ##  Funcionalidades
 
@@ -68,3 +110,18 @@ npm run test:cov
 
 # Lint do código
 npm run lint
+
+
+## 📚 Referências Oficiais
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [React Docs](https://react.dev/)
+- [TypeScript Docs](https://www.typescriptlang.org/docs/)
+- [Styled Components Docs](https://styled-components.com/docs)
+- [Axios Docs](https://axios-http.com/docs/intro)
+- [Jest Docs](https://jestjs.io/docs/getting-started)
+- [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)
+- [ESLint Docs](https://eslint.org/docs/latest/)
+- [Prettier Docs](https://prettier.io/docs/en/)
+- [SWAPI (Star Wars API)](https://swapi.dev/)
+- [Jotai Docs](https://jotai.org/docs)
