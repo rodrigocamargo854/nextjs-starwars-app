@@ -29,15 +29,15 @@ O foco foi criar uma experiência limpa, responsiva e funcional — listando pla
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- ✅ Listagem de planetas com paginação (10 por página)  
-- 🔍 Busca por nome de planeta  
-- 📄 Página de detalhes com informações completas  
-- 👽 Exibição de nativos, espécies e veículos  
-- ⚙️ Rotas de API internas via Next.js  
-- 🌗 Tema dark automático  
-- 📱 Layout responsivo (mobile-first)
+- Listagem de planetas com paginação (10 por página)  
+-  Busca por nome de planeta  
+- Página de detalhes com informações completas  
+-  Exibição de nativos, espécies e veículos  
+-  Rotas de API internas via Next.js  
+- Tema dark automático  
+- Layout responsivo (mobile-first)
 
 ---
 
