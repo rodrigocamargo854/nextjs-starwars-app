@@ -5,12 +5,10 @@ import { getPlanets } from "./lib/api/starwars/api";
 import { Card } from "@/components/Card/Index";
 import { ApiResponse } from "./lib/api/types";
 
-// pega o último número/ID da URL
 function getIdFromUrl(url: string) {
   return url.split("/").filter(Boolean).pop()!;
 }
 
-// mapeia ID dos filmes → nome do filme
 const filmTitles: Record<string, string> = {
   "1": "A New Hope",
   "2": "The Empire Strikes Back",
