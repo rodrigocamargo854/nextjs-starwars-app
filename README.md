@@ -41,15 +41,12 @@ O foco foi criar uma experiência limpa, responsiva e funcional — listando pla
 
 ---
 
-## 🧩 Como Rodar o Projeto Localmente
+🧩 Como Rodar o Projeto Localmente
 
-### 1️⃣ Clone o repositório
+Clone o repositório
 
-```bash
 git clone https://github.com/seu-usuario/starwars-app.git
 cd starwars-app
-
-
 
 Instale as dependências
 
@@ -57,13 +54,12 @@ npm install
 # ou
 yarn
 
-
 Crie o arquivo .env.local
 
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-Comandos principais
 
+4️Comandos principais
 # Rodar o servidor local
 npm run dev
 
