@@ -5,7 +5,6 @@ import { getPlanets } from "./lib/api/starwars/api";
 import { Card } from "@/components/Card/Index";
 import { ApiResponse } from "./lib/api/types";
 
-// pega o último número/ID da URL
 function getIdFromUrl(url: string) {
   return url.split("/").filter(Boolean).pop()!;
 }
