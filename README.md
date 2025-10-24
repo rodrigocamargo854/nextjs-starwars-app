@@ -20,39 +20,15 @@ O foco foi criar uma experiência limpa, responsiva e funcional — listando pla
 
 ---
 
-A estrutura atual do projeto está organizada da seguinte forma:
+## Estrutura geral do projeto
 
-ssrc/
-└─ app/
-├─ tests/
-│ ├─ home-page.test.tsx
-│ ├─ loading.test.tsx
-│ └─ page.test.tsx
-├─ api/
-│ └─ planets/
-│ ├─ [id]/route.ts
-│ └─ route.ts
-├─ lib/
-│ └─ api/
-│ ├─ starwars.ts
-│ ├─ https.ts
-│ └─ types.ts
-├─ planets/
-│ ├─ [id]/page.tsx
-│ └─ loading.tsx
-├─ favicon.ico
-├─ globals.css
-├─ layout.tsx
-└─ page.tsx
-components/
-├─ Card/
-│ ├─ Index.tsx
-│ └─ style.ts
-├─ DetailsCard/
-│ └─ Index.tsx
-└─ ResidentList/
-├─ index.tsx
-└─ styles.ts
+
+- `/app` → páginas, rotas e layout principal  
+- `/app/api` → rotas internas 
+- `/components` → componentes reutilizáveis (Card, DetailsCard, ResidentList)  
+- `/lib/api` → camada de integração com a API externa  
+- `/__tests__` → testes unitários de páginas e componentes  
+
 
 ##  Funcionalidades
 
