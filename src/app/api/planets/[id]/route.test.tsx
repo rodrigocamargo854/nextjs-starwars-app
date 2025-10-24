@@ -17,7 +17,7 @@ jest.mock("next/server", () => ({
 }));
 
 describe("GET /api/planets/[id]", () => {
-  it("retorna um planeta com sucesso", async () => {
+  it("get sucess to return planet", async () => {
     const res = await GET({} as any, { params: { id: "1" } });
     const data = await res.json();
     expect(data).toEqual({ name: "Tatooine" });
