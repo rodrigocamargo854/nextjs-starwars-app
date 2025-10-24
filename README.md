@@ -22,43 +22,37 @@ O foco foi criar uma experiência limpa, responsiva e funcional — listando pla
 
 A estrutura atual do projeto está organizada da seguinte forma:
 
-src/
-├── app/
-│ ├── tests/ # Testes de páginas e rotas
-│ │ ├── loading.test.ts
-│ │ └── page.test.ts
-│ ├── api/
-│ │ └── planets/
-│ │ ├── [id]/route.ts
-│ │ └── route.ts # Rotas de API internas (Next.js)
-│ ├── lib/
-│ │ └── api/
-│ │ ├── https.ts
-│ │ └── swarwars.ts
-│ ├── planets/
-│ │ ├── [id]/page.tsx # Página de detalhes do planeta
-│ │ ├── loading.tsx # Skeleton Loader
-│ │ └── page.tsx # Lista principal de planetas
-│ ├── favicon.ico
-│ ├── globals.css
-│ ├── layout.tsx
-│ └── page.tsx
-│
-├── components/
-│ ├── Card/
-│ │ ├── Index.tsx
-│ │ └── index.test.tsx
-│ ├── DetailsCard/
-│ ├── DetailsList/
-│ └── ResidentList/
-│
-├── styles/
-│ └── style.ts
-│
-├── types/
-│ └── types.ts
-│
-└── .env.local # Variáveis de ambiente
+ssrc/
+└─ app/
+├─ tests/
+│ ├─ home-page.test.tsx
+│ ├─ loading.test.tsx
+│ └─ page.test.tsx
+├─ api/
+│ └─ planets/
+│ ├─ [id]/route.ts
+│ └─ route.ts
+├─ lib/
+│ └─ api/
+│ ├─ starwars.ts
+│ ├─ https.ts
+│ └─ types.ts
+├─ planets/
+│ ├─ [id]/page.tsx
+│ └─ loading.tsx
+├─ favicon.ico
+├─ globals.css
+├─ layout.tsx
+└─ page.tsx
+components/
+├─ Card/
+│ ├─ Index.tsx
+│ └─ style.ts
+├─ DetailsCard/
+│ └─ Index.tsx
+└─ ResidentList/
+├─ index.tsx
+└─ styles.ts
 
 ##  Funcionalidades
 
