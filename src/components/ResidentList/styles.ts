@@ -1,7 +1,6 @@
 "use client";
 import styled from "styled-components";
 
-/* Container principal */
 export const Box = styled.section`
   width: 100%;
   max-width: 880px;
@@ -18,7 +17,6 @@ export const Box = styled.section`
   }
 `;
 
-/* Título da seção */
 export const Header = styled.h2`
   margin: 0 0 12px 0;
   font-size: 1.05rem;
@@ -26,7 +24,6 @@ export const Header = styled.h2`
   line-height: 1.3;
 `;
 
-/* Lista geral */
 export const List = styled.ul`
   margin: 0;
   padding: 0;
@@ -35,12 +32,11 @@ export const List = styled.ul`
   gap: 12px;
 
   @media (min-width: 720px) {
-    grid-template-columns: 1fr 1fr; /* duas colunas em telas médias+ */
+    grid-template-columns: 1fr 1fr; 
     gap: 14px;
   }
 `;
 
-/* Item */
 export const Item = styled.li`
   border: 1px solid #eef2f7;
   border-radius: 10px;
@@ -51,14 +47,12 @@ export const Item = styled.li`
   }
 `;
 
-/* Nome do residente */
 export const Name = styled.div`
   font-weight: 600;
   margin: 0 0 4px 0;
   font-size: 0.98rem;
 `;
 
-/* Linhas de metadados (cabelo, olhos, gênero) */
 export const Meta = styled.div`
   font-size: 0.92rem;
   color: #374151;
@@ -72,14 +66,12 @@ export const Meta = styled.div`
   }
 `;
 
-/* Subtítulo de bloco (Espécies / Veículos) */
 export const Subtitle = styled.div`
   margin-top: 8px;
   font-weight: 600;
   font-size: 0.94rem;
 `;
 
-/* Lista simples com marcadores internos */
 export const Bullets = styled.ul`
   margin: 6px 0 2px 16px;
   padding: 0;
@@ -96,7 +88,6 @@ export const Bullets = styled.ul`
   }
 `;
 
-/* Texto neutro para estados vazios */
 export const Muted = styled.div`
   color: #6b7280;
   font-size: 0.9rem;
@@ -106,7 +97,6 @@ export const Muted = styled.div`
   }
 `;
 
-/* Estado vazio da seção inteira */
 export const Empty = styled.div`
   width: 100%;
   max-width: 880px;

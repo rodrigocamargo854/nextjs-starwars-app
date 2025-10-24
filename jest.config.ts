@@ -35,10 +35,11 @@ const config: Config = {
     "^@/(.*)$": "<rootDir>/src/$1",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  transform: {
-    "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: "tsconfig.json" }]
-  }
+setupFilesAfterEnv: ["<rootDir>/jest.setup.tsx"],
+ transform: {
+  "^.+\\.(ts|tsx)$": "babel-jest",
+},
+
 };
 
 export default config;
