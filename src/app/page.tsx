@@ -5,11 +5,21 @@ import { getPlanets } from "./lib/api/starwars/api";
 import { Card } from "@/components/Card/Index";
 import { ApiResponse } from "./lib/api/types";
 
-
-
+// pega o último número/ID da URL
 function getIdFromUrl(url: string) {
   return url.split("/").filter(Boolean).pop()!;
 }
+
+// mapeia ID dos filmes → nome do filme
+const filmTitles: Record<string, string> = {
+  "1": "A New Hope",
+  "2": "The Empire Strikes Back",
+  "3": "Return of the Jedi",
+  "4": "The Phantom Menace",
+  "5": "Attack of the Clones",
+  "6": "Revenge of the Sith",
+  "7": "The Force Awakens",
+};
 
 export default function Home() {
   const [page, setPage] = useState(1);
@@ -28,7 +38,9 @@ export default function Home() {
         setLoading(false);
       }
     })();
-    return () => { alive = false; };
+    return () => {
+      alive = false;
+    };
   }, [page, search]);
 
   const totalPages = Math.max(1, Math.ceil(data.count / 10));
@@ -39,7 +51,10 @@ export default function Home() {
         <h1 className="text-lg font-bold md:text-2xl">Star Wars Planets</h1>
         <input
           value={search}
-          onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(1);
+          }}
           placeholder="Search by name..."
           className="border rounded-md px-3 py-2 text-sm bg-white dark:bg-zinc-900 w-full md:w-auto"
         />
@@ -50,7 +65,15 @@ export default function Home() {
       <ul className="grid gap-6 w-full max-w-5xl sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 list-none">
         {data.results.map((p) => {
           const id = getIdFromUrl(p.url);
-          const films = p.films?.length ? p.films.length : "None";
+          const filmNames = p.films?.length
+            ? p.films
+                .map((f: string) => {
+                  const filmId = getIdFromUrl(f);
+                  return filmTitles[filmId] || `Episode ${filmId}`;
+                })
+                .join(", ")
+            : "None";
+
           return (
             <li key={p.url}>
               <Card
@@ -60,7 +83,7 @@ export default function Home() {
                   `Terrain: ${p.terrain || "Unknown"}`,
                   `Diameter: ${p.diameter || "Unknown"}`,
                   `Climate: ${p.climate || "Unknown"}`,
-                  `Films: ${films}`,
+                  `Films: ${filmNames}`,
                 ]}
               />
             </li>
