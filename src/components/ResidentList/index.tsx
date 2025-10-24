@@ -1,4 +1,6 @@
 "use client";
+
+
 import { Resident } from "@/app/lib/api/types";
 import * as S from "../ResidentList/styles";
 

@@ -1,4 +1,6 @@
-    import { render, screen, within } from "@testing-library/react";
+import React from 'react';
+
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { ResidentsList } from "../ResidentList/index";
 
@@ -27,10 +29,8 @@ describe("<ResidentsList />", () => {
       />
     );
 
-    // título da seção
     expect(screen.getByRole("heading", { name: /residents/i })).toBeInTheDocument();
 
-    // card do residente
     expect(screen.getByText("Luke Skywalker")).toBeInTheDocument();
     expect(screen.getByText(/hair color:/i)).toBeInTheDocument();
     expect(screen.getByText(/blond/i)).toBeInTheDocument();
@@ -39,12 +39,10 @@ describe("<ResidentsList />", () => {
     expect(screen.getByText(/gender:/i)).toBeInTheDocument();
     expect(screen.getByText(/male/i)).toBeInTheDocument();
 
-    // species
     const speciesTitle = screen.getByText(/species/i);
     const speciesList = speciesTitle.nextElementSibling as HTMLElement;
     expect(within(speciesList).getByText("Human")).toBeInTheDocument();
 
-    // vehicles
     const vehiclesTitle = screen.getByText(/vehicles/i);
     const vehiclesList = vehiclesTitle.nextElementSibling as HTMLElement;
     expect(within(vehiclesList).getByText(/Snowspeeder — t-47 airspeeder/i)).toBeInTheDocument();

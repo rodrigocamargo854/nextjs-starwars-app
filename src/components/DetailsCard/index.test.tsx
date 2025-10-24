@@ -1,3 +1,4 @@
+
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DetailsCard from "./Index";
@@ -17,10 +18,8 @@ describe("<DetailsCard />", () => {
   it("renderiza os campos do planeta e o link de back", () => {
     render(<DetailsCard planet={planet} />);
 
-    // título
     expect(screen.getByRole("heading", { name: "Tatooine" })).toBeInTheDocument();
 
-    // labels/valores principais
     expect(screen.getByText("Rotation period:")).toBeInTheDocument();
     expect(screen.getByText("23")).toBeInTheDocument();
 
@@ -42,7 +41,6 @@ describe("<DetailsCard />", () => {
     expect(screen.getByText("Population:")).toBeInTheDocument();
     expect(screen.getByText("200000")).toBeInTheDocument();
 
-    // back link
     const back = screen.getByRole("link", { name: /back to planets/i });
     expect(back).toHaveAttribute("href", "/");
   });

@@ -36,9 +36,7 @@ const config: Config = {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
   },
 setupFilesAfterEnv: ["<rootDir>/jest.setup.tsx"],
- transform: {
-  "^.+\\.(ts|tsx)$": "babel-jest",
-},
+transform: { "^.+\\.(t|j)sx?$": ["@swc/jest",{}] },
 
 };
 
