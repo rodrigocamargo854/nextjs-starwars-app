@@ -57,6 +57,7 @@ yarn
 Crie o arquivo .env.local
 
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_SWAPI="https://swapi.dev/api"
 
 
 4️Comandos principais

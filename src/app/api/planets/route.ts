@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 
-const SWAPI = "https://swapi.dev/api";
 export const revalidate = 60;
 
 export async function GET(req: Request) {
@@ -8,7 +7,7 @@ export async function GET(req: Request) {
   const page = searchParams.get("page") ?? "1";
   const search = searchParams.get("search") ?? "";
 
-  const url = `${SWAPI}/planets/?page=${page}&search=${encodeURIComponent(search)}`;
+  const url = `${process.env.NEXT_PUBLIC_SWAPI}/planets/?page=${page}&search=${encodeURIComponent(search)}`;
   const res = await fetch(url, { next: { revalidate } });
 
   if (!res.ok) {

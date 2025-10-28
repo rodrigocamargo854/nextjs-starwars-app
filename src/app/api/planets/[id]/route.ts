@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-const SWAPI = "https://swapi.dev/api";
 export const revalidate = 60;
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {
-  const res = await fetch(`${SWAPI}/planets/${params.id}/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SWAPI}/planets/${params.id}/`, {
     next: { revalidate },
   });
 
